@@ -1,29 +1,27 @@
 import pynput
+import win32api
 
 import drawer
-mouse_pressed = False
+mouse_pressed = 0
 x0 = y0 = x1 = y1 = 0
 def click(x, y,button, pressed):
     global x0, y0, x1, y1
     global mouse_pressed
     if pressed:
-        x0 = x
-        y0 = y
-        mouse_pressed = True
+        mouse_pressed = win32api.GetKeyState(0x01)
+        print(mouse_pressed)
+        drawer.draw_rect()
     if not pressed:
-        x1 = x
-        y1 = y
-        mouse_pressed = False
+        print('teste')
+        # x1 = x
+        # y1 = y
+        mouse_pressed = win32api.GetKeyState(0x01)
+        print(mouse_pressed)
         return False
 
+
 def mmove(x,y):
-    global x1, y1
-    x1 = x
-    y1 = y
-
-def start_mlist():
-    mlist = pynput.mouse.Listener(on_click=click,on_move=mmove)
-    mlist.start()
-    mlist.join()
-    mlist.wait()
-
+    global x1, y1, mouse_pressed
+    x1, y1 = win32api.GetCursorPos()
+    # if win32api.GetKeyState(0x01) < 0:
+    #     mouse_pressed = win32api.GetKeyState(0x01)

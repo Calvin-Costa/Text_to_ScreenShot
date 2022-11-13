@@ -1,17 +1,13 @@
 import pynput
 from pynput import keyboard
 
-import drawer
-import mlistener
-
-
 def kpress(key):
     pass
 
 
 def krelease(key):
     if key == keyboard.Key.shift_l:
-        drawer.draw_rect()
+        return False
 
 
 
@@ -20,4 +16,4 @@ def start_klist():
     klist.start()
     klist.join()
     klist.wait()
-
+    klist.stop()
