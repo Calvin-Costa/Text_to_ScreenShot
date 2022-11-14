@@ -2,7 +2,7 @@ import win32con
 import win32gui
 import win32ui
 import win32api
-
+import mlistener
 
 monitor = (0, 0, win32api.GetSystemMetrics(0), win32api.GetSystemMetrics(1))
 dev_con = win32gui.GetDC(0)
@@ -13,3 +13,5 @@ def draw_rect(x0,y0,x1,y1):
     print(f"({x0},{y0}),({x1},{y1})")
     rect = win32gui.DrawEdge(dev_con, (x0, y0,x1,y1), win32con.EDGE_BUMP, win32con.BF_RECT)
     win32gui.InvalidateRect(hwnd, monitor, True)
+    mlistener.x1 = x1
+    mlistener.y1 = y1
