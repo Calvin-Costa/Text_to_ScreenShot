@@ -1,4 +1,3 @@
-import pynput
 from pynput import keyboard
 
 def kpress(key):

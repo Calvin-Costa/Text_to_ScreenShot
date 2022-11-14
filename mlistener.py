@@ -1,4 +1,3 @@
-import pynput
 import win32api
 
 import drawer
